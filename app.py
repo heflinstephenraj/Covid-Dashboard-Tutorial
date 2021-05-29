@@ -8,6 +8,7 @@ st.set_page_config(page_title="Covid Dashboard", page_icon="🕸", layout='wide'
 st.header("Covid Dashboard")
 st.subheader("Developed with ❤ by Heflin")
 
+
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -29,6 +30,8 @@ counrty_wise_death_cases = covid_death_data.groupby('Country/Region').agg({ last
 
 last_updated_date=covid_data.columns[-1]
 counrty_wise_confirmed_cases = covid_data.groupby('Country/Region').agg({ last_updated_date:'sum'}).reset_index().sort_values(last_updated_date,ascending=False)
+
+st.write(f"This data is obtained from [Johns Hopkins University.](https://github.com/CSSEGISandData/COVID-19) Last updated on {last_updated_date}")
 
 no_of_coutires = st.slider("No. of countires", min_value=2, max_value=len(set(covid_data["Country/Region"])), value=50)
 

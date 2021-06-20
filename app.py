@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 st.set_page_config(page_title="Covid Dashboard", page_icon="🕸", layout='wide', initial_sidebar_state='expanded')
 
 st.header("Covid Dashboard")
-st.subheader("Developed with ❤ by Heflin")
+st.subheader("Developed with ❤ by [Heflin Stephen Raj](https://www.heflin.dev/)")
 
 @st.cache
 def fetch_data(url):

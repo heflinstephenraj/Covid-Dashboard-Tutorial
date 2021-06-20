@@ -8,14 +8,6 @@ st.set_page_config(page_title="Covid Dashboard", page_icon="🕸", layout='wide'
 st.header("Covid Dashboard")
 st.subheader("Developed with ❤ by Heflin")
 
-hide_streamlit_style = """
-            <style>
-            #MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
-            </style>
-            """
-st.markdown(hide_streamlit_style,unsafe_allow_html=True)
-
 @st.cache
 def fetch_data(url):
     data = pd.read_csv(url)
@@ -33,7 +25,6 @@ last_updated_date=covid_data.columns[-1]
 counrty_wise_confirmed_cases = covid_data.groupby('Country/Region').agg({ last_updated_date:'sum'}).reset_index().sort_values(last_updated_date,ascending=False)
 last_updated_date_recovered=covid_recovered_data.columns[-1]
 counrty_wise_recovered_cases = covid_recovered_data.groupby('Country/Region').agg({ last_updated_date_recovered:'sum'}).reset_index().sort_values(last_updated_date_recovered,ascending=False)
-
 
 #data info
 st.write(f"This data is obtained from [Johns Hopkins University.](https://github.com/CSSEGISandData/COVID-19) Last updated on {last_updated_date}")
